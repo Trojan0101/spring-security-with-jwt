@@ -1,0 +1,206 @@
+{
+	"info": {
+		"_postman_id": "6d63a476-a998-4b3c-9338-5b3b1022e1d5",
+		"name": "Security_with_jwt",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Login Request",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "aloy",
+							"type": "default"
+						},
+						{
+							"key": "password",
+							"value": "1234",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all users",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbG95Iiwicm9sZXMiOlsiUk9MRV9VU0VSIl0sImlzcyI6Ii9hcGkvbG9naW4iLCJleHAiOjE2NTcwOTYwOTZ9.VkUlqtjTkbS6eMKHfd58kiJZVdAuopfGv48I2QcN_hU",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Access token using refresh token",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhcm9uIiwicm9sZXMiOlsiUk9MRV9NQU5BR0VSIl0sImlzcyI6Ii9hcGkvdG9rZW4vcmVmcmVzaCIsImV4cCI6MTY1NzA5NTEyOH0.Rwwst18P5SWaqoQAL8JbgHzvtZLBTjEwuNPGIpMHpXE",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/token/refresh",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"token",
+						"refresh"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create new user",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqZXNzeSIsInJvbGVzIjpbIlJPTEVfQURNSU4iLCJST0xFX1NVUEVSX0FETUlOIiwiUk9MRV9VU0VSIl0sImlzcyI6Ii9hcGkvbG9naW4iLCJleHAiOjE2NTcwOTU0Njh9.FiQUodTj7EGz9AU480M7wO4nTBACwMuGjRViUp-qiYQ",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"aloysius\",\r\n    \"username\": \"aloy\",\r\n    \"password\": \"1234\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/user/save/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"user",
+						"save",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add role to created user",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqZXNzeSIsInJvbGVzIjpbIlJPTEVfQURNSU4iLCJST0xFX1NVUEVSX0FETUlOIiwiUk9MRV9VU0VSIl0sImlzcyI6Ii9hcGkvbG9naW4iLCJleHAiOjE2NTcwOTU0Njh9.FiQUodTj7EGz9AU480M7wO4nTBACwMuGjRViUp-qiYQ",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"aloy\",\r\n    \"roleName\": \"ROLE_USER\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/role/addtouser",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"role",
+						"addtouser"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create new role",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqZXNzeSIsInJvbGVzIjpbIlJPTEVfQURNSU4iLCJST0xFX1NVUEVSX0FETUlOIiwiUk9MRV9VU0VSIl0sImlzcyI6Ii9hcGkvbG9naW4iLCJleHAiOjE2NTcwOTU0Njh9.FiQUodTj7EGz9AU480M7wO4nTBACwMuGjRViUp-qiYQ",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"ROLE_ULTIMATE\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/role/save",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"role",
+						"save"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
